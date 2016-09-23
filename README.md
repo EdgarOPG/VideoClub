@@ -2,12 +2,12 @@
 
 # Diagrama de procesos
 
-![N|Solid](01.png)
+![N|Solid](images/01.png)
 
 # Diagrama de clases
 
-![N|Solid](02.png)
+![N|Solid](images/02.png)
 
 # Diagrama entidad - relacion
 
-![N|Solid](03.png)
+![N|Solid](images/03.png)
