@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.uach.videoclub.conexion;
+package mx.uach.videoclub.conexiones;
 
 /**
  *
@@ -25,7 +25,8 @@ public class Conexion {
 
     private final static String USUARIO = "root";
     private final static String PASSWORD = "1234";
-    private final static String CONEXION = "jdbc:mysql://localhost:3306/db_video";
+    private final static String CONEXION = 
+            "jdbc:mysql://localhost:3306/mydb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static Conexion INSTANCE;
     private Connection con;
 
@@ -37,6 +38,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(CONEXION, USUARIO, PASSWORD);
+            System.out.println("Connected");
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Conexion.class.getName())
                   .log(Level.SEVERE, null, ex);

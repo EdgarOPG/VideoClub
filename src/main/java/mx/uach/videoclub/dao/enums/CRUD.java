@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.uach.videoclub.dao;
+package mx.uach.videoclub.dao.enums;
 
 /**
  *
@@ -12,3 +12,4 @@ package mx.uach.videoclub.dao;
 public enum CRUD {
     CREATE, READ, UPDATE, DELETE;
 }
+
