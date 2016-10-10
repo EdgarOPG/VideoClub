@@ -58,5 +58,4 @@ public class Director extends Model {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 }

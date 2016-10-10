@@ -11,4 +11,9 @@ package mx.uach.videoclub.modelos;
  */
 public class Socio {
     
+    public static final String TABLA = "Socios";
+    
+    private String nombre;
+    private String Direccion;
+    private String Telefono;
 }

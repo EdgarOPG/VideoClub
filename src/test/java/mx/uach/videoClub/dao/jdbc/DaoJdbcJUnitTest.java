@@ -5,13 +5,11 @@
  */
 package mx.uach.videoClub.dao.jdbc;
 
-import java.util.List;
 import mx.uach.videoclub.dao.enums.CRUD;
 import mx.uach.videoclub.dao.VideoDao;
 import mx.uach.videoclub.dao.jdbc.VideoDaoJDBC;
-import mx.uach.videoclub.modelos.Director;
+import mx.uach.videoclub.modelos.Actor;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -19,41 +17,46 @@ import static org.junit.Assert.*;
  */ 
 public class DaoJdbcJUnitTest {
         
-    @Test
-    public void directorByIdTest(){
-        VideoDao dao = new VideoDaoJDBC();
-        
-        // Id = 1 James Cameron
-        Director d = dao.getDirectorById(1);
-        
-        assertNotNull(d);
-        assertEquals(d.getNombre(), "James Cameron");
-        
-        assertNotEquals(d.getNombre(), "Alfonso Cuaron");
-        
-        //Id = 2 Alfonso Cuaron
-        Director d2 = dao.getDirectorById(2);
-        
-        assertNotNull(d2);
-        assertEquals(d2.getNombre(), "Alfonso Cuaron");
-        
-        assertNotEquals(d2.getNombre(), "James Cameron");
-        
-        
-//        List<Director> directores = dao.getDirectoresByCriteria("");
-        //assertEquals(3, directores.size());
-        
-    }
+//    @Test
+//    public void directorByIdTest(){
+//        VideoDao dao = new VideoDaoJDBC();
+//        
+//        // Id = 1 James Cameron
+//        Director d = dao.getDirectorById(1);
+//        
+//        assertNotNull(d);
+//        assertEquals(d.getNombre(), "James Cameron");
+//        
+//        assertNotEquals(d.getNombre(), "Alfonso Cuaron");
+//        
+//        //Id = 2 Alfonso Cuaron
+//        Director d2 = dao.getDirectorById(2);
+//        
+//        assertNotNull(d2);
+//        assertEquals(d2.getNombre(), "Alfonso Cuaron");
+//        
+//        assertNotEquals(d2.getNombre(), "James Cameron");
+//        
+////        List<Director> directores = dao.getDirectoresByCriteria("");
+//        //assertEquals(3, directores.size());
+//        
+//    }
     
     @Test
-    public void makeDirector(){
+    public void makeActor(){
         VideoDao dao = new VideoDaoJDBC();
-        dao.directorProcess(new Director("Tim Burton"), CRUD.CREATE);
-        
-        Director d = dao.getDirectorById(3);
-        assertNotNull(d);
-        assertEquals(d.getNombre(), "Tim Burton");
+        dao.actorProccess(new Actor("Johnny", "Deep"), CRUD.CREATE);        
     }
+   
+//    @Test
+//    public void makeDirector(){
+//        VideoDao dao = new VideoDaoJDBC();
+//        dao.directorProcess(new Director("Tim Burton"), CRUD.CREATE);
+//        
+//        Director d = dao.getDirectorById(3);
+//        assertNotNull(d);
+//        assertEquals(d.getNombre(), "Tim Burton");
+//    }
     
     
 //    @Test

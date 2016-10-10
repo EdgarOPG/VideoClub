@@ -3,6 +3,7 @@ package mx.uach.videoclub.dao;
 
 import mx.uach.videoclub.dao.enums.CRUD;
 import java.util.List;
+import mx.uach.videoclub.modelos.Actor;
 import mx.uach.videoclub.modelos.Director;
 
 /**
@@ -17,4 +18,11 @@ public interface VideoDao {
     public List<Director> getDirectoresByCriteria(String criterio);
     
     public void directorProcess(Director director, CRUD crud);
+    
+    public Actor getActorById(Integer id);
+    
+    public List<Actor> getActoresByCriteria(String criterio);
+
+    public void actorProccess(Actor actor, CRUD crud);
+   
 }

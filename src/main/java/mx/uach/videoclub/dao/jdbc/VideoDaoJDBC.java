@@ -5,28 +5,17 @@
  */
 package mx.uach.videoclub.dao.jdbc;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import mx.uach.videoclub.conexiones.Conexion;
-import mx.uach.videoclub.dao.enums.CRUD;
-import mx.uach.videoclub.dao.VideoDao;
-import mx.uach.videoclub.modelos.Director;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import mx.uach.videoclub.conexiones.Conexion;
 import mx.uach.videoclub.dao.VideoDao;
 import mx.uach.videoclub.dao.enums.CRUD;
 import mx.uach.videoclub.dao.jdbc.helpers.VideoDaoJdbcHelper;
+import mx.uach.videoclub.modelos.Actor;
 import mx.uach.videoclub.modelos.Director;
 
 /**
@@ -113,6 +102,62 @@ public class VideoDaoJDBC implements VideoDao {
             System.out.println( ex.getMessage());
         }
         
+    }
+    
+    @Override
+    public Actor getActorById(Integer id) {
+        try {
+            Statement st = Conexion.getInstance().getCon().createStatement();
+            ResultSet rs = st.executeQuery(String.format("%s %s %s ", Director.Q,
+                    Director.Q_WHRE_ID, id));
+            Actor obj = null;
+            while (rs.next()) {
+                obj = VideoDaoJdbcHelper.makeActor(rs);
+            }
+            return obj;
+        } catch (SQLException ex) {
+
+        }
+        return null;
+    }
+
+    @Override
+    public List<Actor> getActoresByCriteria(String criterio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actorProccess(Actor actor, CRUD crud) {
+        try {
+            PreparedStatement ps = null;
+            switch (crud) {
+                case CREATE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Actor.INSERT_ACTOR);
+                    ps.setString(1, actor.getNombre());
+                    ps.setString(2, actor.getApellido());
+                    break;
+                case UPDATE:
+                    //UPDATE TABLA SET()
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Actor.UPDATE_ACTOR);
+                    ps.setString(1, actor.getNombre());
+                    ps.setInt(2, actor.getId());
+                    break;
+                case DELETE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Actor.DELETE_ACTOR);
+                    ps.setInt(1, actor.getId());
+                    break;
+                default:
+                    break;
+            }
+            
+            Boolean result = ps.execute();            
+            
+        } catch (SQLException ex) {
+            System.out.println( ex.getMessage());
+        }
     }
 
 }
