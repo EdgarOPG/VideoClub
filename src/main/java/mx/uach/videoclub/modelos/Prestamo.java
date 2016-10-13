@@ -6,8 +6,9 @@
 package mx.uach.videoclub.modelos;
 
 /**
- *
- * @author edgar
+ * Definicion de los atributos de la clase Prestamo y sus metodos get y set.
+ * @author Edgar Omar Peinado Garcia
+ * @version 1.0
  */
 public class Prestamo {
     

@@ -8,8 +8,9 @@ package mx.uach.videoclub.modelos;
 import mx.uach.videoclub.modelos.genericos.Model;
 
 /**
- *
- * @author edgar
+ * Definicion de los atributos de la clase Actor y sus metodos get y set.
+ * @author Edgar Omar Peinado Garcia
+ * @version 1.0
  */
 public class Actor extends Model{
     
@@ -39,9 +40,6 @@ public class Actor extends Model{
     public Actor() {
     }
     
-    public Actor(String nombre) {
-        this.nombre = nombre;
-    }
     
     public Actor(String nombre, String apellido) {
         this.nombre = nombre;

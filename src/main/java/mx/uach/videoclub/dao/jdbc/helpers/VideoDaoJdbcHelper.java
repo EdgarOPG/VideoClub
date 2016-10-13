@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import mx.uach.videoclub.modelos.Actor;
 import mx.uach.videoclub.modelos.Director;
+import mx.uach.videoclub.modelos.Ficha;
+import mx.uach.videoclub.modelos.Pelicula;
+import mx.uach.videoclub.modelos.Socio;
 
 /**
  *
@@ -25,6 +28,27 @@ public class VideoDaoJdbcHelper {
     public final static Actor makeActor(ResultSet rs) throws SQLException {
        Actor obj = new Actor(rs.getInt(Actor.FIELDS[0]),
                 rs.getString(Actor.FIELDS[1]),rs.getString(Actor.FIELDS[2]));
+       return obj;
+    }
+    
+    public final static Ficha makeFicha(ResultSet rs) throws SQLException {
+       Ficha obj = new Ficha(rs.getInt(Ficha.FIELDS[0]),
+                 (Socio) rs.getObject(Ficha.FIELDS[1]), rs.getDate(Ficha.FIELDS[2]));
+       return obj;
+    }
+    
+    public final static Socio makeSocio(ResultSet rs) throws SQLException {
+       Socio obj = new Socio(rs.getInt(Socio.FIELDS[0]),
+                 rs.getString(Socio.FIELDS[1]), rs.getString(Socio.FIELDS[2]),
+                 rs.getString(Socio.FIELDS[3]));
+       return obj;
+    }
+    
+    public final static Pelicula makePelicula(ResultSet rs) throws SQLException {
+       Pelicula obj = new Pelicula(rs.getInt(Pelicula.FIELDS[0]),
+                 rs.getString(Pelicula.FIELDS[1]), rs.getString(Pelicula.FIELDS[2]),
+                 rs.getInt(Pelicula.FIELDS[3]), 
+                 (Director) rs.getObject(Pelicula.FIELDS[4]));
        return obj;
     }
 }

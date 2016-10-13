@@ -6,8 +6,9 @@ package mx.uach.videoclub.modelos;
 import mx.uach.videoclub.modelos.genericos.Model;
 
 /**
- *
- * @author edgar
+ * Definicion de los atributos de la clase Director y sus metodos get y set.
+ * @author Edgar Omar Peinado Garcia
+ * @version 1.0
  */
 public class Director extends Model {
 
