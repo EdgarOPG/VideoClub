@@ -40,7 +40,6 @@ public class Actor extends Model{
     public Actor() {
     }
     
-    
     public Actor(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;

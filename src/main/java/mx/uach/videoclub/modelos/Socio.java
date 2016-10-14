@@ -6,10 +6,6 @@
 package mx.uach.videoclub.modelos;
 
 import mx.uach.videoclub.modelos.genericos.Model;
-import static mx.uach.videoclub.modelos.genericos.Model.ID;
-import static mx.uach.videoclub.modelos.genericos.Model.fieldsToQuery;
-import static mx.uach.videoclub.modelos.genericos.Model.paramsToStatement;
-import static mx.uach.videoclub.modelos.genericos.Model.paramsToStatementToCreate;
 
 /**
  * Definicion de los atributos de la clase Socio y sus metodos get y set.
@@ -46,16 +42,23 @@ public class Socio extends Model{
     public Socio() {
     }
 
-    public Socio(String nombre, String Direccion, String Telefono) {
+    /**
+    * Constructor unicamente para los test
+    * @author Edgar Omar Peinado Garcia
+    * @version 1.0
+    */
+    public Socio(Integer id) {
+        this.setId(id);
+    }
+     
+    public Socio(String nombre, String direccion, String telefono) {
         this.nombre = nombre;
-        this.direccion = Direccion;
-        this.telefono = Telefono;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
-    public Socio(Integer id, String nombre, String Direccion, String Telefono) {
-        this.nombre = nombre;
-        this.direccion = Direccion;
-        this.telefono = Telefono;
+    public Socio(Integer id, String nombre, String direccion, String telefono) {
+        this(nombre,direccion,telefono);
         this.setId(id);
     }
 
@@ -71,18 +74,16 @@ public class Socio extends Model{
         return direccion;
     }
 
-    public void setDireccion(String Direccion) {
-        this.direccion = Direccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String Telefono) {
-        this.telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    
-    
 }

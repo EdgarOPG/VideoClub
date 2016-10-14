@@ -36,6 +36,15 @@ public class Director extends Model {
 
     public Director() {
     }
+    
+    /**
+    * Constructor unicamente para los test
+    * @author Edgar Omar Peinado Garcia
+    * @version 1.0
+    */        
+    public Director(Integer id) {
+        this.setId(id);
+    }    
 
     public Director(String nombre) {
         this.nombre = nombre;

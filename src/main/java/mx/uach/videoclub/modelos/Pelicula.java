@@ -16,8 +16,8 @@ public class Pelicula extends Model{
     
     public static final String TABLA = "Peliculas";
     
-    public static final String[] FIELDS = {"titulo", "genero", "duracion", 
-        "director"};
+    public static final String[] FIELDS = {"id","titulo", "genero", "duracion", 
+        "director_id"};
     
     public static final String Q = String.format("SELECT %s FROM %s",
             fieldsToQuery(FIELDS, Boolean.FALSE), TABLA);
@@ -42,6 +42,11 @@ public class Pelicula extends Model{
 
     public Pelicula() {
     }
+    
+    public Pelicula(Integer id) {
+        setId(id);
+    }
+
 
     public Pelicula(String titulo, String genero, Integer duracion, Director director) {
         this.titulo = titulo;
@@ -89,6 +94,5 @@ public class Pelicula extends Model{
     public void setDirector(Director director) {
         this.director = director;
     }
-    
-    
+   
 }

@@ -11,8 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Modelo general de todo el sistema
- *
- * @author edgar
+ * @author Edgar Omar Peinado Garcia
  * @version 1.0
  */
 public class Model {

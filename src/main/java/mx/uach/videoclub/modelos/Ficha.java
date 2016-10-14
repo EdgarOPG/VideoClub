@@ -7,10 +7,7 @@ package mx.uach.videoclub.modelos;
 
 import java.sql.Date;
 import mx.uach.videoclub.modelos.genericos.Model;
-import static mx.uach.videoclub.modelos.genericos.Model.ID;
-import static mx.uach.videoclub.modelos.genericos.Model.fieldsToQuery;
-import static mx.uach.videoclub.modelos.genericos.Model.paramsToStatement;
-import static mx.uach.videoclub.modelos.genericos.Model.paramsToStatementToCreate;
+
 
 /**
  * Definicion de los atributos de la clase Ficha y sus metodos get y set.
@@ -44,6 +41,15 @@ public class Ficha extends Model{
     public Ficha() {
     }
 
+    /**
+    * Constructor unicamente para los test
+    * @author Edgar Omar Peinado Garcia
+    * @version 1.0
+    */    
+    public Ficha(Integer id) {
+        super(id);
+    }
+    
     public Ficha(Socio socio,  Date fechaPrestamo) {
         this.socio = socio;
         this.fechaPrestamo = fechaPrestamo;
@@ -70,6 +76,5 @@ public class Ficha extends Model{
     public void setSocio(Socio socio) {
         this.socio = socio;
     }
-    
-    
+
 }
