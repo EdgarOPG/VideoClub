@@ -48,6 +48,13 @@ public class Prestamo extends Model{
     public Prestamo() {
     }
 
+    /**
+    * Constructor unicamente para los test
+    */      
+    public Prestamo(Integer id) {
+        setId(id);
+    }
+
     public Prestamo(Ficha ficha, Cinta cinta, Date fechaEntrega, String estatus) {
         this.ficha = ficha;
         this.cinta = cinta;

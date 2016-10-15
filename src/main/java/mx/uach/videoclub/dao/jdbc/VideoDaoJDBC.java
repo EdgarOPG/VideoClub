@@ -140,7 +140,7 @@ public class VideoDaoJDBC implements VideoDao {
     
 
     @Override
-    public void actorProccess(Actor actor, CRUD crud) {
+    public void actorProcess(Actor actor, CRUD crud) {
         try {
             PreparedStatement ps = null;
             switch (crud) {
@@ -214,7 +214,7 @@ public class VideoDaoJDBC implements VideoDao {
     }
     
     @Override
-    public void fichaProccess(Ficha ficha, CRUD crud) {
+    public void fichaProcess(Ficha ficha, CRUD crud) {
         try {
             PreparedStatement ps = null;
             switch (crud) {
@@ -286,7 +286,7 @@ public class VideoDaoJDBC implements VideoDao {
     }
     
     @Override
-    public void socioProccess(Socio socio, CRUD crud) {
+    public void socioProcess(Socio socio, CRUD crud) {
         try {
             PreparedStatement ps = null;
             switch (crud) {
@@ -364,7 +364,7 @@ public class VideoDaoJDBC implements VideoDao {
     }
     
     @Override
-    public void peliculaProccess(Pelicula pelicula, CRUD crud) {
+    public void peliculaProcess(Pelicula pelicula, CRUD crud) {
         try {
             PreparedStatement ps = null;
             switch (crud) {
@@ -440,7 +440,7 @@ public class VideoDaoJDBC implements VideoDao {
     }
     
     @Override
-    public void cintaProccess(Cinta cinta, CRUD crud) {
+    public void cintaProcess(Cinta cinta, CRUD crud) {
         try {
             PreparedStatement ps = null;
             switch (crud) {
@@ -512,7 +512,7 @@ public class VideoDaoJDBC implements VideoDao {
     }
 
     @Override
-    public void prestamoProccess(Prestamo prestamo, CRUD crud) {
+    public void prestamoProcess(Prestamo prestamo, CRUD crud) {
         try {
             PreparedStatement ps = null;
             switch (crud) {

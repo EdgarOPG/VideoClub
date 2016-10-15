@@ -42,7 +42,10 @@ public class Pelicula extends Model{
 
     public Pelicula() {
     }
-    
+
+    /**
+    * Constructor unicamente para los test
+    */      
     public Pelicula(Integer id) {
         setId(id);
     }

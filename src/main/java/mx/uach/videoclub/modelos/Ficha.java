@@ -43,8 +43,6 @@ public class Ficha extends Model{
 
     /**
     * Constructor unicamente para los test
-    * @author Edgar Omar Peinado Garcia
-    * @version 1.0
     */    
     public Ficha(Integer id) {
         super(id);

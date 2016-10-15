@@ -5,17 +5,6 @@
  */
 package mx.uach.videoClub.dao.jdbc;
 
-import java.util.List;
-import mx.uach.videoclub.dao.enums.CRUD;
-import mx.uach.videoclub.dao.VideoDao;
-import mx.uach.videoclub.dao.jdbc.VideoDaoJDBC;
-import mx.uach.videoclub.modelos.Director;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import org.junit.Test;
-
 /**
  * Clase de pruebas unitarias
  * @author Edgar Omar Peinado Garcia

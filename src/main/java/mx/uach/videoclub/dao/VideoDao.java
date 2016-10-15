@@ -74,7 +74,7 @@ public interface VideoDao {
      * sus atributos como parametros para las operacines del CRUD.
      * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
      */
-    public void actorProccess(Actor actor, CRUD crud);
+    public void actorProcess(Actor actor, CRUD crud);
     
     /**
      * Regresa una ficha basado en un id del registro de la base de datos.
@@ -102,7 +102,7 @@ public interface VideoDao {
      * sus atributos como parametros para las operacines del CRUD.
      * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
      */    
-    public void fichaProccess(Ficha ficha, CRUD crud);  
+    public void fichaProcess(Ficha ficha, CRUD crud);  
     
     /**
      * Regresa un socio basado en un id del registro de la base de datos.
@@ -130,7 +130,7 @@ public interface VideoDao {
      * sus atributos como parametros para las operacines del CRUD.
      * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
      */    
-    public void socioProccess(Socio socio, CRUD crud); 
+    public void socioProcess(Socio socio, CRUD crud); 
     
     /**
      * Regresa una pelicula basado en un id del registro de la base de datos.
@@ -158,7 +158,7 @@ public interface VideoDao {
      * sus atributos como parametros para las operacines del CRUD.
      * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
      */    
-    public void peliculaProccess(Pelicula pelicula, CRUD crud); 
+    public void peliculaProcess(Pelicula pelicula, CRUD crud); 
     
     /**
      * Regresa una cinta basado en un id del registro de la base de datos.
@@ -186,7 +186,7 @@ public interface VideoDao {
      * sus atributos como parametros para las operacines del CRUD.
      * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
      */
-    public void cintaProccess(Cinta cinta, CRUD crud); 
+    public void cintaProcess(Cinta cinta, CRUD crud); 
     
     /**
      * Regresa una solo prestamo basado en un id del registro de la base de datos.
@@ -214,6 +214,6 @@ public interface VideoDao {
      * sus atributos como parametros para las operacines del CRUD.
      * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
      */    
-    public void prestamoProccess(Prestamo prestamo, CRUD crud); 
+    public void prestamoProcess(Prestamo prestamo, CRUD crud); 
     
 }

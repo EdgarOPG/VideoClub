@@ -5,16 +5,15 @@
  */
 package mx.uach.videoClub.dao.jdbc;
 
-import java.sql.Date;
-import java.text.ParseException;
+import java.util.List;
 import mx.uach.videoclub.dao.VideoDao;
 import mx.uach.videoclub.dao.enums.CRUD;
 import mx.uach.videoclub.dao.jdbc.VideoDaoJDBC;
 import mx.uach.videoclub.modelos.Actor;
-import mx.uach.videoclub.modelos.Director;
-import mx.uach.videoclub.modelos.Ficha;
-import mx.uach.videoclub.modelos.Pelicula;
-import mx.uach.videoclub.modelos.Socio;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 /**
@@ -26,26 +25,60 @@ public class DaoJdbcJUnitTestActor {
     @Test
     public void makeActor(){
         VideoDao dao = new VideoDaoJDBC();
-        dao.actorProccess(new Actor("Jim", "Carrie"), CRUD.CREATE); 
-        dao.actorProccess(new Actor("Leonardo", "DiCaprio"), CRUD.CREATE); 
+        dao.actorProcess(new Actor("Jim", "Carrey"), CRUD.CREATE); 
+        dao.actorProcess(new Actor("Leonardo", "DiCaprio"), CRUD.CREATE); 
     }
     
     @Test
-    public void makeSocio(){
+    public void actorByIdTest(){
         VideoDao dao = new VideoDaoJDBC();
-        dao.socioProccess(new Socio(2 ,"Edgar", "Chihuahua", "31656"), CRUD.CREATE);        
+        
+        // Id = 1 Jim 
+        Actor a = dao.getActorById(1);
+        
+        assertNotNull(a);
+        assertEquals(a.getNombre(), "Jim");
+        
+        assertNotEquals(a.getNombre(), "Leonardo");
+        
+        //Id = 2 Leonardo
+        Actor a2 = dao.getActorById(2);
+        
+        assertNotNull(a2);
+        assertEquals(a2.getNombre(), "Leonardo");
+        
+        assertNotEquals(a2.getNombre(), "Jim");
+        
+        List<Actor> actores = dao.getActoresByCriteria("");
+        assertEquals(2, actores.size());
     }
-
+    
     @Test
-    public void makeFicha() throws ParseException{
-        
-        String stringFecha = "2014-09-19";
-        Date fecha = Date.valueOf(stringFecha);
-        System.out.println(fecha);
-        
-        Socio socio = new Socio(1);
-        
+    public void updateActor(){
         VideoDao dao = new VideoDaoJDBC();
-        dao.fichaProccess(new Ficha(socio, fecha), CRUD.CREATE);        
-    }    
+       
+        Actor a = dao.getActorById(2);
+        assertNotNull(a);
+        
+        a.setNombre("Will");
+        dao.actorProcess(a, CRUD.UPDATE);
+        
+        a = dao.getActorById(2);
+        assertNotNull(a);
+        assertEquals(a.getNombre(), "Will");
+    }
+    
+    @Test
+    public void deleteActor(){
+        VideoDao dao = new VideoDaoJDBC();
+       
+        Actor a = dao.getActorById(2);
+        assertNotNull(a);
+        
+       
+        dao.actorProcess(a, CRUD.DELETE);
+        
+        a = dao.getActorById(2);
+        assertNull(a);
+    }
 }
