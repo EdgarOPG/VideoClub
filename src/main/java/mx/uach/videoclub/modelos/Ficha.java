@@ -54,8 +54,7 @@ public class Ficha extends Model{
     }   
 
     public Ficha(Integer id, Socio socio,  Date fechaPrestamo) {
-        this.socio = socio;
-        this.fechaPrestamo = fechaPrestamo;
+        this(socio, fechaPrestamo);
         setId(id);
     }
 

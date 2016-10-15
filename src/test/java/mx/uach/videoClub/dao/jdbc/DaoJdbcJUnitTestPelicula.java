@@ -35,8 +35,7 @@ public class DaoJdbcJUnitTestPelicula {
         
         dao.peliculaProcess(new Pelicula("Titanic", "Romance", 120, director), CRUD.CREATE);
         dao.peliculaProcess(new Pelicula("Melancholia", "Drama", 120, director2), CRUD.CREATE);           
-    }
-    
+    }    
         
     @Test
     public void peliculaByIdTest(){

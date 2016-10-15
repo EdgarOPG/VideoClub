@@ -12,6 +12,7 @@ import mx.uach.videoclub.modelos.Actor;
 import mx.uach.videoclub.modelos.Cinta;
 import mx.uach.videoclub.modelos.Director;
 import mx.uach.videoclub.modelos.Ficha;
+import mx.uach.videoclub.modelos.Lista;
 import mx.uach.videoclub.modelos.Pelicula;
 import mx.uach.videoclub.modelos.Prestamo;
 import mx.uach.videoclub.modelos.Socio;
@@ -72,6 +73,15 @@ public class VideoDaoJdbcHelper {
                 dao.getFichaById(rs.getInt(Prestamo.FIELDS[1])), 
                 dao.getCintaById(rs.getInt(Prestamo.FIELDS[2])), 
                 rs.getDate(Prestamo.FIELDS[3]), rs.getString(Prestamo.FIELDS[4]));
+        return obj;
+    }
+    
+    public final static Lista makeLista(ResultSet rs) throws SQLException {
+        VideoDaoJDBC dao = new VideoDaoJDBC();
+        Lista obj = new Lista(rs.getInt(Lista.FIELDS[0]),
+                dao.getSocioById(rs.getInt(Lista.FIELDS[1])),
+                rs.getDate(Lista.FIELDS[2]), rs.getString(Lista.FIELDS[3]), 
+                dao.getPeliculaById(rs.getInt(Lista.FIELDS[4])));
         return obj;
     }
 }

@@ -7,6 +7,7 @@ import mx.uach.videoclub.modelos.Actor;
 import mx.uach.videoclub.modelos.Cinta;
 import mx.uach.videoclub.modelos.Director;
 import mx.uach.videoclub.modelos.Ficha;
+import mx.uach.videoclub.modelos.Lista;
 import mx.uach.videoclub.modelos.Pelicula;
 import mx.uach.videoclub.modelos.Prestamo;
 import mx.uach.videoclub.modelos.Socio;
@@ -215,5 +216,33 @@ public interface VideoDao {
      * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
      */    
     public void prestamoProcess(Prestamo prestamo, CRUD crud); 
+    
+        /**
+     * Regresa una solo prestamo basado en un id del registro de la base de datos.
+     *
+     * @param id entero que identifica la entidad.
+     * @return null si el id no se encuentra en la base de datos ó un
+     * {@code Lista} si el id es valido.
+     */
+    
+    public Lista getListaById(Integer id);
+   /**
+     * Regresa una lista de los prestamos basado en un criterio especifico de la base 
+     * de datos.
+     * @param criterio Cadena de texto para buscar por cualquier atributo.
+     * @return null si no encuentra ninguna coincidencia
+     * {@code List<Lista>} si hay al menos una.
+     */
+    public List<Lista> getListasByCriteria(String criterio);
+
+    /**
+     * Crea, actualiza o elimina una pelicula basado en un id del registro de 
+     * la base de datos.
+     *
+     * @param lista recibe una instancia de esta clase, para utilizar despues
+     * sus atributos como parametros para las operacines del CRUD.
+     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
+     */    
+    public void listaProcess(Lista lista, CRUD crud); 
     
 }

@@ -19,6 +19,7 @@ import mx.uach.videoclub.modelos.Actor;
 import mx.uach.videoclub.modelos.Cinta;
 import mx.uach.videoclub.modelos.Director;
 import mx.uach.videoclub.modelos.Ficha;
+import mx.uach.videoclub.modelos.Lista;
 import mx.uach.videoclub.modelos.Pelicula;
 import mx.uach.videoclub.modelos.Prestamo;
 import mx.uach.videoclub.modelos.Socio;
@@ -538,6 +539,80 @@ public class VideoDaoJDBC implements VideoDao {
                     ps = Conexion.getInstance().
                     getCon().prepareStatement(Prestamo.DELETE_PRESTAMO);
                     ps.setInt(1, prestamo.getId());
+                    break;
+                default:
+                    break;
+            }
+            System.out.println(ps);
+            Boolean result = ps.execute();            
+            
+        } catch (SQLException ex) {
+            System.out.println( ex.getMessage());
+        }
+    }
+
+    @Override
+    public Lista getListaById(Integer id) {
+        try {
+            Statement st = Conexion.getInstance().getCon().createStatement();
+            ResultSet rs = st.executeQuery(String.format("%s %s %s ", Lista.Q,
+                    Lista.Q_WHRE_ID, id));
+            Lista obj = null;
+            while (rs.next()) {
+                obj = VideoDaoJdbcHelper.makeLista(rs);
+            }
+            return obj;
+        } catch (SQLException ex) {
+
+        }
+        return null;
+    }
+
+    @Override
+    public List<Lista> getListasByCriteria(String criterio) {
+        List<Lista> objects = new ArrayList<>();
+        try {
+            Statement st = Conexion.getInstance().getCon().createStatement();
+            ResultSet rs = st.executeQuery(String.format("%s %s %s ", Lista.Q,
+                    criterio.isEmpty() ? "" : Lista.Q_WHERE, criterio));
+            Lista obj = null;
+            while (rs.next()) {
+                obj = VideoDaoJdbcHelper.makeLista(rs);
+                objects.add(obj);
+            }
+
+        } catch (SQLException ex) {
+
+        }
+        return objects;        
+    }
+
+    @Override
+    public void listaProcess(Lista lista, CRUD crud) {
+        try {
+            PreparedStatement ps = null;
+            switch (crud) {
+                case CREATE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Lista.INSERT_LISTA);
+                    ps.setInt(1, lista.getSocio().getId());
+                    ps.setDate(2, lista.getFecha());
+                    ps.setString(3, lista.getEstatus());
+                    ps.setInt(4, lista.getPelicula().getId());
+                    break;
+                case UPDATE:
+                    //UPDATE TABLA SET()
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Lista.UPDATE_LISTA);
+                    ps.setInt(1, lista.getSocio().getId());
+                    ps.setDate(2, lista.getFecha());
+                    ps.setString(3, lista.getEstatus());
+                    ps.setInt(4, lista.getId());
+                    break;
+                case DELETE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Lista.DELETE_LISTA);
+                    ps.setInt(1, lista.getId());
                     break;
                 default:
                     break;
