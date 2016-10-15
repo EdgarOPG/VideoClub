@@ -31,14 +31,8 @@ public class VideoDaoJDBC implements VideoDao {
 
     public VideoDaoJDBC() {
     }
-
-    /**
-     * Regresa un director basado en un id del registro de la base de datos.
-     *
-     * @param id entero que identifica la entidad.
-     * @return null si el id no se encuentra en la base de datos ó un
-     * {@code Director} si el id es valido.
-     */
+ 
+//  Interface de la clase Director
     @Override
     public Director getDirectorById(Integer id) {
         try {
@@ -56,13 +50,6 @@ public class VideoDaoJDBC implements VideoDao {
         return null;
     }
 
-    /**
-     * Regresa una lista de directores basado en un criterio especifico de 
-     * la base de datos.
-     * @param criterio Cadena de texto para buscar por cualquier atributo.
-     * @return null si no encuentra ninguna coincidencia
-     * {@code List<Director>} si hay al menos una.
-     */
     @Override
     public List<Director> getDirectoresByCriteria(String criterio) {
         List<Director> objects = new ArrayList<>();
@@ -82,16 +69,6 @@ public class VideoDaoJDBC implements VideoDao {
         return objects;
     }
     
-    
-    /**
-     * Crea, actualiza o elimina un director basado en un id del registro de 
-     * la base de datos.
-     *
-     * @param director recibe una instancia de esta clase, para utilizar despues
-     * sus atributos como parametros para las operacines del CRUD.
-     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
-     */
-    @Override
     public void directorProcess(Director director, CRUD crud) {
         try {
             PreparedStatement ps = null;
@@ -124,13 +101,7 @@ public class VideoDaoJDBC implements VideoDao {
         }
     }
     
-    /**
-     * Regresa un actor basado en un id del registro de la base de datos.
-     *
-     * @param id entero que identifica la entidad.
-     * @return null si el id no se encuentra en la base de datos ó un
-     * {@code Actor} si el id es valido.
-     */
+//  Interface de la clase Actor
     @Override
     public Actor getActorById(Integer id) {
         try {
@@ -147,14 +118,7 @@ public class VideoDaoJDBC implements VideoDao {
         }
         return null;
     }
-    
-    /**
-     * Regresa una lista de actores basado en un criterio especifico de la base 
-     * de datos.
-     * @param criterio Cadena de texto para buscar por cualquier atributo.
-     * @return null si no encuentra ninguna coincidencia
-     * {@code List<Actor>} si hay al menos una.
-     */
+   
     @Override
     public List<Actor> getActoresByCriteria(String criterio) {
                 List<Actor> objects = new ArrayList<>();
@@ -174,14 +138,7 @@ public class VideoDaoJDBC implements VideoDao {
         return objects;
     }
     
-    /**
-     * Crea, actualiza o elimina un actor basado en un id del registro de 
-     * la base de datos.
-     *
-     * @param actor recibe una instancia de esta clase, para utilizar despues
-     * sus atributos como parametros para las operacines del CRUD.
-     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
-     */
+
     @Override
     public void actorProccess(Actor actor, CRUD crud) {
         try {
@@ -219,13 +176,7 @@ public class VideoDaoJDBC implements VideoDao {
         }
     }
 
-    /**
-     * Regresa una ficha basado en un id del registro de la base de datos.
-     *
-     * @param id entero que identifica la entidad.
-     * @return null si el id no se encuentra en la base de datos ó un
-     * {@code Ficha} si el id es valido.
-     */
+//  Interface de la clase Ficha
     @Override
     public Ficha getFichaById(Integer id) {
         try {
@@ -243,13 +194,6 @@ public class VideoDaoJDBC implements VideoDao {
         return null;
     }
     
-    /**
-     * Regresa una lista de fichas basado en un criterio especifico de la base 
-     * de datos.
-     * @param criterio Cadena de texto para buscar por cualquier atributo.
-     * @return null si no encuentra ninguna coincidencia
-     * {@code List<Actor>} si hay al menos una.
-     */
     @Override
     public List<Ficha> getFichasByCriteria(String criterio) {
                 List<Ficha> objects = new ArrayList<>();
@@ -269,14 +213,6 @@ public class VideoDaoJDBC implements VideoDao {
         return objects;
     }
     
-    /**
-     * Crea, actualiza o elimina una ficha basado en un id del registro de 
-     * la base de datos.
-     *
-     * @param ficha recibe una instancia de esta clase, para utilizar despues
-     * sus atributos como parametros para las operacines del CRUD.
-     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
-     */
     @Override
     public void fichaProccess(Ficha ficha, CRUD crud) {
         try {
@@ -311,14 +247,8 @@ public class VideoDaoJDBC implements VideoDao {
             System.out.println( ex.getMessage());
         }
     }
-    
-    /**
-     * Regresa un socio basado en un id del registro de la base de datos.
-     *
-     * @param id entero que identifica la entidad.
-     * @return null si el id no se encuentra en la base de datos ó un
-     * {@code Socio} si el id es valido.
-     */
+
+//  Interface de la clase Socio    
     @Override
     public Socio getSocioById(Integer id) {
         try {
@@ -336,13 +266,6 @@ public class VideoDaoJDBC implements VideoDao {
         return null;
     }
     
-    /**
-     * Regresa una lista de socios basado en un criterio especifico de la base 
-     * de datos.
-     * @param criterio Cadena de texto para buscar por cualquier atributo.
-     * @return null si no encuentra ninguna coincidencia
-     * {@code List<Socio>} si hay al menos una.
-     */
     @Override
     public List<Socio> getSociosByCriteria(String criterio) {
                 List<Socio> objects = new ArrayList<>();
@@ -362,14 +285,6 @@ public class VideoDaoJDBC implements VideoDao {
         return objects;
     }
     
-    /**
-     * Crea, actualiza o elimina un socio basado en un id del registro de 
-     * la base de datos.
-     *
-     * @param socio recibe una instancia de esta clase, para utilizar despues
-     * sus atributos como parametros para las operacines del CRUD.
-     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
-     */
     @Override
     public void socioProccess(Socio socio, CRUD crud) {
         try {
@@ -411,13 +326,7 @@ public class VideoDaoJDBC implements VideoDao {
         }
     }
 
-    /**
-     * Regresa una pelicula basado en un id del registro de la base de datos.
-     *
-     * @param id entero que identifica la entidad.
-     * @return null si el id no se encuentra en la base de datos ó un
-     * {@code Pelicula} si el id es valido.
-     */
+//  Interface de la clase Pelicula
     @Override
     public Pelicula getPeliculaById(Integer id) {
         try {
@@ -435,13 +344,6 @@ public class VideoDaoJDBC implements VideoDao {
         return null;
     }
     
-    /**
-     * Regresa una lista de peliculas basado en un criterio especifico de la base 
-     * de datos.
-     * @param criterio Cadena de texto para buscar por cualquier atributo.
-     * @return null si no encuentra ninguna coincidencia
-     * {@code List<Pelicula>} si hay al menos una.
-     */
     @Override
     public List<Pelicula> getPeliculasByCriteria(String criterio) {
                 List<Pelicula> objects = new ArrayList<>();
@@ -461,14 +363,6 @@ public class VideoDaoJDBC implements VideoDao {
         return objects;
     }
     
-    /**
-     * Crea, actualiza o elimina una pelicula basado en un id del registro de 
-     * la base de datos.
-     *
-     * @param pelicula recibe una instancia de esta clase, para utilizar despues
-     * sus atributos como parametros para las operacines del CRUD.
-     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
-     */
     @Override
     public void peliculaProccess(Pelicula pelicula, CRUD crud) {
         try {
@@ -507,14 +401,8 @@ public class VideoDaoJDBC implements VideoDao {
             System.out.println( ex.getMessage());
         }
     }
-    
-    /**
-     * Regresa una cinta basado en un id del registro de la base de datos.
-     *
-     * @param id entero que identifica la entidad.
-     * @return null si el id no se encuentra en la base de datos ó un
-     * {@code Pelicula} si el id es valido.
-     */
+
+//  Interface de la clase Cinta
     @Override
     public Cinta getCintaById(Integer id) {
         try {
@@ -532,13 +420,6 @@ public class VideoDaoJDBC implements VideoDao {
         return null;
     }
     
-    /**
-     * Regresa una lista de cintas basado en un criterio especifico de la base 
-     * de datos.
-     * @param criterio Cadena de texto para buscar por cualquier atributo.
-     * @return null si no encuentra ninguna coincidencia
-     * {@code List<Cinta>} si hay al menos una.
-     */
     @Override
     public List<Cinta> getCintasByCriteria(String criterio) {
         List<Cinta> objects = new ArrayList<>();
@@ -558,14 +439,6 @@ public class VideoDaoJDBC implements VideoDao {
         return objects;
     }
     
-    /**
-     * Crea, actualiza o elimina una pelicula basado en un id del registro de 
-     * la base de datos.
-     *
-     * @param pelicula recibe una instancia de esta clase, para utilizar despues
-     * sus atributos como parametros para las operacines del CRUD.
-     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
-     */
     @Override
     public void cintaProccess(Cinta cinta, CRUD crud) {
         try {
@@ -601,13 +474,7 @@ public class VideoDaoJDBC implements VideoDao {
         }
     }
     
-    /**
-     * Regresa una solo prestamo basado en un id del registro de la base de datos.
-     *
-     * @param id entero que identifica la entidad.
-     * @return null si el id no se encuentra en la base de datos ó un
-     * {@code Prestamo} si el id es valido.
-     */
+//  Interface de la clase Prestamo
     @Override
     public Prestamo getPrestamoById(Integer id) {
         try {
@@ -625,13 +492,6 @@ public class VideoDaoJDBC implements VideoDao {
         return null;
     }
     
-   /**
-     * Regresa una lista de los prestamos basado en un criterio especifico de la base 
-     * de datos.
-     * @param criterio Cadena de texto para buscar por cualquier atributo.
-     * @return null si no encuentra ninguna coincidencia
-     * {@code List<Prestamo>} si hay al menos una.
-     */
     @Override
     public List<Prestamo> getPrestamosByCriteria(String criterio) {
         List<Prestamo> objects = new ArrayList<>();
@@ -651,14 +511,6 @@ public class VideoDaoJDBC implements VideoDao {
         return objects;
     }
 
-    /**
-     * Crea, actualiza o elimina una pelicula basado en un id del registro de 
-     * la base de datos.
-     *
-     * @param prestamo recibe una instancia de esta clase, para utilizar despues
-     * sus atributos como parametros para las operacines del CRUD.
-     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
-     */
     @Override
     public void prestamoProccess(Prestamo prestamo, CRUD crud) {
         try {
