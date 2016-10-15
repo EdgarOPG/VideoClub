@@ -8,9 +8,11 @@ package mx.uach.videoclub.dao.jdbc.helpers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import mx.uach.videoclub.modelos.Actor;
+import mx.uach.videoclub.modelos.Cinta;
 import mx.uach.videoclub.modelos.Director;
 import mx.uach.videoclub.modelos.Ficha;
 import mx.uach.videoclub.modelos.Pelicula;
+import mx.uach.videoclub.modelos.Prestamo;
 import mx.uach.videoclub.modelos.Socio;
 
 /**
@@ -49,6 +51,20 @@ public class VideoDaoJdbcHelper {
                  rs.getString(Pelicula.FIELDS[1]), rs.getString(Pelicula.FIELDS[2]),
                  rs.getInt(Pelicula.FIELDS[3]), 
                  (Director) rs.getObject(Pelicula.FIELDS[4]));
+       return obj;
+    }
+    
+    public final static Cinta makeCinta(ResultSet rs) throws SQLException {
+       Cinta obj = new Cinta(rs.getInt(Cinta.FIELDS[0]),
+                 (Pelicula) rs.getObject(Cinta.FIELDS[1]), rs.getInt(Cinta.FIELDS[2]));
+       return obj;
+    }
+    
+    public final static Prestamo makePrestamo(ResultSet rs) throws SQLException {
+       Prestamo obj = new Prestamo(rs.getInt(Prestamo.FIELDS[0]),
+                 (Ficha) rs.getObject(Prestamo.FIELDS[1]), 
+               (Cinta) rs.getObject(Prestamo.FIELDS[2]), 
+               rs.getDate(Prestamo.FIELDS[3]), rs.getString(Prestamo.FIELDS[4]));
        return obj;
     }
 }

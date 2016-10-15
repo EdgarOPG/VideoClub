@@ -6,8 +6,6 @@
 package mx.uach.videoclub.modelos;
 
 import java.sql.Date;
-import static mx.uach.videoclub.modelos.Pelicula.FIELDS;
-import static mx.uach.videoclub.modelos.Pelicula.TABLA;
 import mx.uach.videoclub.modelos.genericos.Model;
 import static mx.uach.videoclub.modelos.genericos.Model.ID;
 import static mx.uach.videoclub.modelos.genericos.Model.fieldsToQuery;
@@ -23,8 +21,8 @@ public class Prestamo extends Model{
     
     public static final String TABLA = "Cintas_fichas";
     
-    public static final String[] FIELDS = {"ficha_id","dvd_id", "fecha_entrega", "estatus", 
-        "director"};
+    public static final String[] FIELDS = {"id","ficha_id","cintas_id", 
+        "fecha_entrega", "estatus"};
     
     public static final String Q = String.format("SELECT %s FROM %s",
             fieldsToQuery(FIELDS, Boolean.FALSE), TABLA);
@@ -42,43 +40,40 @@ public class Prestamo extends Model{
     public static final String DELETE_PRESTAMO = 
             String.format("%s %s %s ?", Model.DELETE, TABLA, Model.Q_WHRE_ID);
 
-    private Integer fichaId;
-    private Integer dvdId;
+    private Ficha ficha;
+    private Cinta cinta;
     private Date fechaEntrega;
     private String estatus;
 
     public Prestamo() {
     }
 
-    public Prestamo(Integer fichaId, Integer dvdId, Date fechaEntrega, String estatus) {
-        this.fichaId = fichaId;
-        this.dvdId = dvdId;
+    public Prestamo(Ficha ficha, Cinta cinta, Date fechaEntrega, String estatus) {
+        this.ficha = ficha;
+        this.cinta = cinta;
         this.fechaEntrega = fechaEntrega;
         this.estatus = estatus;
     }
 
-    public Prestamo(Integer id, Integer fichaId, Integer dvdId, Date fechaEntrega, String estatus) {
-        this.fichaId = fichaId;
-        this.dvdId = dvdId;
-        this.fechaEntrega = fechaEntrega;
-        this.estatus = estatus;
+    public Prestamo(Integer id, Ficha ficha, Cinta cinta, Date fechaEntrega, String estatus) {
+        this(ficha, cinta, fechaEntrega, estatus);
         setId(id);
     }
 
-    public Integer getFichaId() {
-        return fichaId;
+    public Ficha getFicha() {
+        return ficha;
     }
 
-    public void setFichaId(Integer fichaId) {
-        this.fichaId = fichaId;
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
     }
 
-    public Integer getDvdId() {
-        return dvdId;
+    public Cinta getCinta() {
+        return cinta;
     }
 
-    public void setDvdId(Integer dvdId) {
-        this.dvdId = dvdId;
+    public void setCinta(Cinta cintaId) {
+        this.cinta = cintaId;
     }
 
     public Date getFechaEntrega() {
@@ -96,5 +91,5 @@ public class Prestamo extends Model{
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
-    
+
 }

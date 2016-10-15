@@ -34,8 +34,8 @@ public class Cinta extends Model{
     public static final String DELETE_CINTA = 
             String.format("%s %s %s ?", Model.DELETE, TABLA, Model.Q_WHRE_ID);
 
-    private Integer peliculaId;
-    private String numeroCopia;
+    private Pelicula pelicula;
+    private Integer numeroCopia;
 
     public Cinta() {
     }
@@ -49,32 +49,31 @@ public class Cinta extends Model{
         setId(id);
     }
 
-    public Cinta(Integer peliculaId, String numeroCopia) {
-        this.peliculaId = peliculaId;
+    public Cinta(Pelicula pelicula, Integer numeroCopia) {
+        this.pelicula = pelicula;
         this.numeroCopia = numeroCopia;
     }
 
-    public Cinta(Integer id, Integer peliculaId, String numeroCopia) {
-        this.peliculaId = peliculaId;
+    public Cinta(Integer id, Pelicula pelicula, Integer numeroCopia) {
+        this.pelicula = pelicula;
         this.numeroCopia = numeroCopia;
         setId(id);
     }
 
-    public Integer getPeliculaId() {
-        return peliculaId;
+    public Pelicula getPelicula() {
+        return pelicula;
     }
 
-    public void setPeliculaId(Integer peliculaId) {
-        this.peliculaId = peliculaId;
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
     }
 
-    public String getNumeroCopia() {
+    public Integer getNumeroCopia() {
         return numeroCopia;
     }
 
-    public void setNumeroCopia(String numeroCopia) {
+    public void setNumeroCopia(Integer numeroCopia) {
         this.numeroCopia = numeroCopia;
     }
-    
     
 }

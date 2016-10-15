@@ -16,9 +16,11 @@ import mx.uach.videoclub.dao.VideoDao;
 import mx.uach.videoclub.dao.enums.CRUD;
 import mx.uach.videoclub.dao.jdbc.helpers.VideoDaoJdbcHelper;
 import mx.uach.videoclub.modelos.Actor;
+import mx.uach.videoclub.modelos.Cinta;
 import mx.uach.videoclub.modelos.Director;
 import mx.uach.videoclub.modelos.Ficha;
 import mx.uach.videoclub.modelos.Pelicula;
+import mx.uach.videoclub.modelos.Prestamo;
 import mx.uach.videoclub.modelos.Socio;
 
 /**
@@ -421,7 +423,7 @@ public class VideoDaoJDBC implements VideoDao {
         try {
             Statement st = Conexion.getInstance().getCon().createStatement();
             ResultSet rs = st.executeQuery(String.format("%s %s %s ", Pelicula.Q,
-                    Ficha.Q_WHRE_ID, id));
+                    Pelicula.Q_WHRE_ID, id));
             Pelicula obj = null;
             while (rs.next()) {
                 obj = VideoDaoJdbcHelper.makePelicula(rs);
@@ -498,7 +500,197 @@ public class VideoDaoJDBC implements VideoDao {
                 default:
                     break;
             }
+            System.out.println(ps);
+            Boolean result = ps.execute();            
             
+        } catch (SQLException ex) {
+            System.out.println( ex.getMessage());
+        }
+    }
+    
+    /**
+     * Regresa una cinta basado en un id del registro de la base de datos.
+     *
+     * @param id entero que identifica la entidad.
+     * @return null si el id no se encuentra en la base de datos ó un
+     * {@code Pelicula} si el id es valido.
+     */
+    @Override
+    public Cinta getCintaById(Integer id) {
+        try {
+            Statement st = Conexion.getInstance().getCon().createStatement();
+            ResultSet rs = st.executeQuery(String.format("%s %s %s ", Cinta.Q,
+                    Cinta.Q_WHRE_ID, id));
+            Cinta obj = null;
+            while (rs.next()) {
+                obj = VideoDaoJdbcHelper.makeCinta(rs);
+            }
+            return obj;
+        } catch (SQLException ex) {
+
+        }
+        return null;
+    }
+    
+    /**
+     * Regresa una lista de cintas basado en un criterio especifico de la base 
+     * de datos.
+     * @param criterio Cadena de texto para buscar por cualquier atributo.
+     * @return null si no encuentra ninguna coincidencia
+     * {@code List<Cinta>} si hay al menos una.
+     */
+    @Override
+    public List<Cinta> getCintasByCriteria(String criterio) {
+        List<Cinta> objects = new ArrayList<>();
+        try {
+            Statement st = Conexion.getInstance().getCon().createStatement();
+            ResultSet rs = st.executeQuery(String.format("%s %s %s ", Cinta.Q,
+                    criterio.isEmpty() ? "" : Cinta.Q_WHERE, criterio));
+            Cinta obj = null;
+            while (rs.next()) {
+                obj = VideoDaoJdbcHelper.makeCinta(rs);
+                objects.add(obj);
+            }
+
+        } catch (SQLException ex) {
+
+        }
+        return objects;
+    }
+    
+    /**
+     * Crea, actualiza o elimina una pelicula basado en un id del registro de 
+     * la base de datos.
+     *
+     * @param pelicula recibe una instancia de esta clase, para utilizar despues
+     * sus atributos como parametros para las operacines del CRUD.
+     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
+     */
+    @Override
+    public void cintaProccess(Cinta cinta, CRUD crud) {
+        try {
+            PreparedStatement ps = null;
+            switch (crud) {
+                case CREATE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Cinta.INSERT_CINTA);
+                    ps.setInt(1, cinta.getPelicula().getId());
+                    ps.setInt(2, cinta.getNumeroCopia());
+                    break;
+                case UPDATE:
+                    //UPDATE TABLA SET()
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Cinta.UPDATE_CINTA);
+                    ps.setInt(1, cinta.getPelicula().getId());
+                    ps.setInt(2, cinta.getNumeroCopia());
+                    ps.setInt(3, cinta.getId());
+                    break;
+                case DELETE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Cinta.DELETE_CINTA);
+                    ps.setInt(1, cinta.getId());
+                    break;
+                default:
+                    break;
+            }
+            System.out.println(ps);
+            Boolean result = ps.execute();            
+            
+        } catch (SQLException ex) {
+            System.out.println( ex.getMessage());
+        }
+    }
+    
+    /**
+     * Regresa una solo prestamo basado en un id del registro de la base de datos.
+     *
+     * @param id entero que identifica la entidad.
+     * @return null si el id no se encuentra en la base de datos ó un
+     * {@code Prestamo} si el id es valido.
+     */
+    @Override
+    public Prestamo getPrestamoById(Integer id) {
+        try {
+            Statement st = Conexion.getInstance().getCon().createStatement();
+            ResultSet rs = st.executeQuery(String.format("%s %s %s ", Prestamo.Q,
+                    Prestamo.Q_WHRE_ID, id));
+            Prestamo obj = null;
+            while (rs.next()) {
+                obj = VideoDaoJdbcHelper.makePrestamo(rs);
+            }
+            return obj;
+        } catch (SQLException ex) {
+
+        }
+        return null;
+    }
+    
+   /**
+     * Regresa una lista de los prestamos basado en un criterio especifico de la base 
+     * de datos.
+     * @param criterio Cadena de texto para buscar por cualquier atributo.
+     * @return null si no encuentra ninguna coincidencia
+     * {@code List<Prestamo>} si hay al menos una.
+     */
+    @Override
+    public List<Prestamo> getPrestamosByCriteria(String criterio) {
+        List<Prestamo> objects = new ArrayList<>();
+        try {
+            Statement st = Conexion.getInstance().getCon().createStatement();
+            ResultSet rs = st.executeQuery(String.format("%s %s %s ", Prestamo.Q,
+                    criterio.isEmpty() ? "" : Prestamo.Q_WHERE, criterio));
+            Prestamo obj = null;
+            while (rs.next()) {
+                obj = VideoDaoJdbcHelper.makePrestamo(rs);
+                objects.add(obj);
+            }
+
+        } catch (SQLException ex) {
+
+        }
+        return objects;
+    }
+
+    /**
+     * Crea, actualiza o elimina una pelicula basado en un id del registro de 
+     * la base de datos.
+     *
+     * @param prestamo recibe una instancia de esta clase, para utilizar despues
+     * sus atributos como parametros para las operacines del CRUD.
+     * @param crud un valor enum que puede ser CREATE, UPDATE, DELETE.
+     */
+    @Override
+    public void prestamoProccess(Prestamo prestamo, CRUD crud) {
+        try {
+            PreparedStatement ps = null;
+            switch (crud) {
+                case CREATE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Prestamo.INSERT_PRESTAMO);
+                    ps.setInt(1, prestamo.getFicha().getId());
+                    ps.setInt(2, prestamo.getCinta().getId());
+                    ps.setDate(3, prestamo.getFechaEntrega());
+                    ps.setString(4, prestamo.getEstatus());
+                    break;
+                case UPDATE:
+                    //UPDATE TABLA SET()
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Prestamo.UPDATE_PRESTAMO);
+                    ps.setInt(1, prestamo.getFicha().getId());
+                    ps.setInt(2, prestamo.getCinta().getId());
+                    ps.setDate(3, prestamo.getFechaEntrega());
+                    ps.setString(4, prestamo.getEstatus());
+                    ps.setInt(5, prestamo.getId());
+                    break;
+                case DELETE:
+                    ps = Conexion.getInstance().
+                    getCon().prepareStatement(Prestamo.DELETE_PRESTAMO);
+                    ps.setInt(1, prestamo.getId());
+                    break;
+                default:
+                    break;
+            }
+            System.out.println(ps);
             Boolean result = ps.execute();            
             
         } catch (SQLException ex) {

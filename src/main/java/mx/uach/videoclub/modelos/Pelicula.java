@@ -56,10 +56,7 @@ public class Pelicula extends Model{
     }
 
     public Pelicula(Integer id, String titulo, String genero, Integer duracion, Director director) {
-        this.titulo = titulo;
-        this.genero = genero;
-        this.duracion = duracion;
-        this.director = director;
+        this(titulo, genero, duracion, director);
         setId(id);
     }
 
